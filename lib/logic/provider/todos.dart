@@ -10,18 +10,17 @@ class Todos extends ChangeNotifier {
     _initializeList();
   }
 
-  // Ro'yxatni boshlang'ich yuklash
+
   void _initializeList() {
     _list = todoBox.values.toList().cast<ToDo>();
-    notifyListeners(); // Ekranni yangilash
+    notifyListeners();
   }
 
-  // Foydalanuvchi uchun ro'yxatni olish
+
   List<ToDo> get todoList {
     return [..._list];
   }
 
-  // Yangi vazifa qo'shish
   void addTodo({
     required String title,
     required DateTime date,
@@ -34,23 +33,23 @@ class Todos extends ChangeNotifier {
       isDone: isDone,
     );
 
-    // Qutiga qo'shish
+
     todoBox.add(newTodo);
 
-    // `_list` ro'yxatini yangilash
+
     _list = todoBox.values.toList().cast<ToDo>();
-    notifyListeners(); // Ekranni yangilash
+    notifyListeners();
   }
 
-  // Vazifani o'chirish
+
   void deleteTodo({required int index}) {
     final key = todoBox.keyAt(index);
 
-    // Qutidan o'chirish
+   
     todoBox.delete(key);
 
-    // `_list` ro'yxatini yangilash
+ 
     _list = todoBox.values.toList().cast<ToDo>();
-    notifyListeners(); // Ekranni yangilash
+    notifyListeners(); 
   }
 }
